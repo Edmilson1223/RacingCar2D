@@ -4,16 +4,18 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class Player_Movement : MonoBehaviour 
+public class Player_Movement : MonoBehaviour
 {
     public Transform transform;
     public float speed = 5f;
     public Score_Manenger scoreValue;
     public float rotationspeed = 5f;
     public GameObject gameOverPanel;
-    
+
     // Novo: sensibilidade do acelerômetro
     public float tiltSensitivity = 3f;
+
+    public GameObject gamePausePanel;
 
     void Start()
     {
@@ -31,30 +33,30 @@ public class Player_Movement : MonoBehaviour
     {
         // Pega o valor do acelerômetro no eixo x
         float tilt = Input.acceleration.x * tiltSensitivity;
-        
+
         // Movimento por teclado (mantido para testes no editor)
         if (Input.GetKey(KeyCode.RightArrow) || tilt > 0.1f)
         {
             float moveAmount = Input.GetKey(KeyCode.RightArrow) ? 1 : tilt;
             transform.position += new Vector3(speed * moveAmount * Time.deltaTime, 0, 0);
-            transform.rotation = Quaternion.Lerp(transform.rotation, 
-                                               Quaternion.Euler(0, 0, -47), 
+            transform.rotation = Quaternion.Lerp(transform.rotation,
+                                               Quaternion.Euler(0, 0, -47),
                                                rotationspeed * Time.deltaTime);
         }
-        
+
         if (Input.GetKey(KeyCode.LeftArrow) || tilt < -0.1f)
         {
             float moveAmount = Input.GetKey(KeyCode.LeftArrow) ? 1 : -tilt;
             transform.position -= new Vector3(speed * moveAmount * Time.deltaTime, 0, 0);
-            transform.rotation = Quaternion.Lerp(transform.rotation, 
-                                               Quaternion.Euler(0, 0, 47), 
+            transform.rotation = Quaternion.Lerp(transform.rotation,
+                                               Quaternion.Euler(0, 0, 47),
                                                rotationspeed * Time.deltaTime);
         }
 
         if (transform.rotation.z != 90)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, 
-                                               Quaternion.Euler(0, 0, 0), 
+            transform.rotation = Quaternion.Lerp(transform.rotation,
+                                               Quaternion.Euler(0, 0, 0),
                                                10f * Time.deltaTime);
         }
     }
@@ -72,6 +74,8 @@ public class Player_Movement : MonoBehaviour
         {
             Time.timeScale = 0;
             gameOverPanel.SetActive(true);
+            gamePausePanel.SetActive(false);
+
         }
         if (collision.gameObject.CompareTag("Coin"))
         {

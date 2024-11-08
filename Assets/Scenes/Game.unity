@@ -453,7 +453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &255826215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1252,7 +1252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1217011079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1610,7 +1610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1620698550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,6 +1802,7 @@ MonoBehaviour:
   rotationspeed: 5
   gameOverPanel: {fileID: 137557627}
   tiltSensitivity: 3
+  gamePausePanel: {fileID: 1981235604}
 --- !u!212 &1651551490
 SpriteRenderer:
   m_ObjectHideFlags: 0
